@@ -110,21 +110,33 @@ cartModal.addEventListener('click', (e) => {
     if (e.target === cartModal) cartModal.classList.add('oculto');
 });
 
-checkoutBtn.addEventListener('click', () => {
+checkoutBtn.addEventListener('click', async () => {
     if (carrito.length === 0) {
-        mostrarToast('Tu carrito está vacío');
+        mostrarToast('🛒 Tu carrito está vacío');
         return;
     }
-    
+
     const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-    
+    const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+
+    // Mostrar notificación de compra (usando Service Worker)
     if ('Notification' in window && Notification.permission === 'granted') {
-        new Notification('¡Compra exitosa!', {
-            body: `Tu pedido de $${total.toFixed(2)} ha sido procesado.`,
-            icon: 'img/icons/icon-192x192.png'
-        });
+        try {
+            const registro = await navigator.serviceWorker.ready;
+            await registro.showNotification('💄 ¡Compra exitosa!', {
+                body: `Tu pedido de $${total.toFixed(2)} (${totalItems} ${totalItems === 1 ? 'producto' : 'productos'}) ha sido procesado.`,
+                icon: './img/icons/icon-192x192.png',
+                badge: './img/icons/icon-72x72.png',
+                vibrate: [200, 100, 200],
+                tag: 'compra-exitosa',
+                renotify: true
+            });
+        } catch (error) {
+            console.error('Error al mostrar notificación:', error);
+        }
     }
-    
+
+    // Limpiar carrito
     carrito = [];
     guardarCarrito();
     actualizarCarrito();
