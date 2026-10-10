@@ -1,9 +1,10 @@
 const PRODUCTOS = [
-    { id: 1, nombre: 'Labial Mate Rojo', categoria: 'labios', precio: 15.99, img: 'img/productos/labial.jpg' },
-    { id: 2, nombre: 'Paleta de Sombras Nude', categoria: 'ojos', precio: 24.99, img: 'img/productos/sombras.jpg' },
-    { id: 3, nombre: 'Rubor Rosado', categoria: 'rostro', precio: 12.50, img: 'img/productos/rubor.jpg' },
+    { id: 1, nombre: 'Labial Mate', categoria: 'labios', precio: 15.99, img: 'img/productos/labial.jpg' },
+    { id: 2, nombre: 'Paleta de Sombras ', categoria: 'ojos', precio: 24.99, img: 'img/productos/sombra.jpg' },
+    { id: 3, nombre: 'Rubor ', categoria: 'rostro', precio: 12.50, img: 'img/productos/rubor.jpg' },
     { id: 4, nombre: 'Máscara de Pestañas', categoria: 'ojos', precio: 18.75, img: 'img/productos/mascara.jpg' },
-    { id: 5, nombre: 'Iluminador Dorado', categoria: 'rostro', precio: 19.99, img: 'img/productos/iluminador.jpg' }
+    { id: 5, nombre: 'Base Líquida ', categoria: 'rostro', precio: 22.00, img: 'img/productos/base.jpg' },
+    { id: 6, nombre: 'Iluminador', categoria: 'rostro', precio: 19.99, img: 'img/productos/iluminador.jpg' }
 ];
 
 const VAPID_PUBLIC_KEY = 'BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U';

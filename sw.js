@@ -1,4 +1,4 @@
-const CACHE_NAME = 'glow-cosmetics-v6';
+const CACHE_NAME = 'glow-cosmetics-v6'; 
 const APP_SHELL = [
     './',
     './index.html',
@@ -13,11 +13,12 @@ const APP_SHELL = [
     './img/icons/icon-144x144.png',
     './img/icons/icon-192x192.png',
     './img/icons/icon-512x512.png',
+    './img/productos/base.jpg',
     './img/productos/iluminador.jpg',
     './img/productos/labial.jpg',
     './img/productos/mascara.jpg',
     './img/productos/rubor.jpg',
-    './img/productos/sombras.jpg'
+    './img/productos/sombra.jpg'
 ];
 
 self.addEventListener('install', (e) => {
