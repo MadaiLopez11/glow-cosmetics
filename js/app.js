@@ -195,33 +195,6 @@ notifBtn.addEventListener('click', async () => {
     }
 });
 
-//notifBtn.addEventListener('click', async () => {
-    //if (!('Notification' in window) || !('PushManager' in window)) {
-       // mostrarToast('Tu navegador no soporta notificaciones');
-       // return;
-    //}
-
-    //try {
-       // const permiso = await Notification.requestPermission();
-        
-        //if (permiso !== 'granted') {
-         //   mostrarToast('Permiso denegado');
-         //   return;
-        //}
-
-       // new Notification('¡Notificaciones activadas!', {
-           // body: 'Te avisaremos de ofertas y nuevos productos.',
-            //icon: 'img/icons/icon-192x192.png',
-           // badge: 'img/icons/icon-72x72.png',
-            //vibrate: [200, 100, 200]
-        //});
-
-      //  mostrarToast('🔔 ¡Notificaciones activadas!');
-    //} catch (error) {
-        //console.error('Error:', error);
-       // mostrarToast('❌ Error al activar notificaciones');
-    //}
-//});
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
