@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e91e63">
+    <meta name="description" content="Tienda de maquillaje online - GlowCosmetics">
+    
+    <title>GlowCosmetics</title>
+
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/icons/favicon-16x16.png">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/apple-touch-icon.png">
+    
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="GlowCosmetics">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <h1><i class="fas fa-spa"></i> GlowCosmetics</h1>
+            <div class="header-actions">
+                <button id="notif-btn" class="icon-btn" title="Activar notificaciones">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button id="cart-btn" class="icon-btn" title="Carrito">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="banner">
+        <h2>Brilla con tu estilo </h2>
+        <p>Descubre nuestra colección premium de maquillaje</p>
+    </section>
+
+    <section class="filters">
+        <button class="filter-btn active" data-cat="all">Todos</button>
+        <button class="filter-btn" data-cat="labios">Labios</button>
+        <button class="filter-btn" data-cat="ojos">Ojos</button>
+        <button class="filter-btn" data-cat="rostro">Rostro</button>
+    </section>
+
+    <section class="products" id="products"></section>
+
+    <div id="cart-modal" class="modal oculto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-bag"></i> Tu Carrito</h3>
+                <button id="close-cart" class="close-btn">&times;</button>
+            </div>
+            <div id="cart-items" class="cart-items"></div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button id="checkout-btn" class="checkout-btn">
+                <i class="fas fa-credit-card"></i> Finalizar Compra
+            </button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

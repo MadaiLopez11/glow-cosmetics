@@ -1,0 +1,40 @@
+{
+    "name": "GlowCosmetics - Tienda de Maquillaje",
+    "short_name": "GlowCosmetics",
+    "description": "Descubre nuestra colección premium de maquillaje",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#fce4ec",
+    "theme_color": "#e91e63",
+    "lang": "es",
+    "categories": ["shopping", "lifestyle", "beauty"],
+    "icons": [
+        {
+            "src": "img/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "img/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
