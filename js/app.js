@@ -148,32 +148,80 @@ function mostrarToast(mensaje) {
 }
 
 notifBtn.addEventListener('click', async () => {
-    if (!('Notification' in window) || !('PushManager' in window)) {
-        mostrarToast('Tu navegador no soporta notificaciones');
+    // 1. Verificar soporte
+    if (!('Notification' in window)) {
+        mostrarToast('❌ Tu navegador no soporta notificaciones');
+        return;
+    }
+
+    // 2. Verificar si el permiso ya fue denegado permanentemente
+    if (Notification.permission === 'denied') {
+        mostrarToast('🔒 Ve a Ajustes del navegador y permite notificaciones para este sitio');
         return;
     }
 
     try {
+        // 3. Pedir permiso
         const permiso = await Notification.requestPermission();
-        
+
         if (permiso !== 'granted') {
-            mostrarToast('Permiso denegado');
+            mostrarToast('❌ Permiso denegado');
             return;
         }
 
-        new Notification('¡Notificaciones activadas!', {
-            body: 'Te avisaremos de ofertas y nuevos productos.',
-            icon: 'img/icons/icon-192x192.png',
-            badge: 'img/icons/icon-72x72.png',
-            vibrate: [200, 100, 200]
-        });
+        // 4. Mostrar notificación DESDE EL SERVICE WORKER (compatible con Android/iOS)
+        if ('serviceWorker' in navigator) {
+            const registro = await navigator.serviceWorker.ready;
+            await registro.showNotification('💄 ¡Notificaciones activadas!', {
+                body: 'Te avisaremos de ofertas y nuevos productos.',
+                icon: 'img/icons/icon-192x192.png',
+                badge: 'img/icons/icon-72x72.png',
+                vibrate: [200, 100, 200],
+                tag: 'welcome-notif'
+            });
+        } else {
+            // Fallback: navegadores sin SW
+            new Notification('💄 ¡Notificaciones activadas!', {
+                body: 'Te avisaremos de ofertas y nuevos productos.',
+                icon: 'img/icons/icon-192x192.png'
+            });
+        }
 
         mostrarToast('🔔 ¡Notificaciones activadas!');
+
     } catch (error) {
-        console.error('Error:', error);
-        mostrarToast('❌ Error al activar notificaciones');
+        console.error('Error al activar notificaciones:', error);
+        mostrarToast('⚠️ ' + (error.message || 'Error al activar notificaciones'));
     }
 });
+
+//notifBtn.addEventListener('click', async () => {
+    //if (!('Notification' in window) || !('PushManager' in window)) {
+       // mostrarToast('Tu navegador no soporta notificaciones');
+       // return;
+    //}
+
+    //try {
+       // const permiso = await Notification.requestPermission();
+        
+        //if (permiso !== 'granted') {
+         //   mostrarToast('Permiso denegado');
+         //   return;
+        //}
+
+       // new Notification('¡Notificaciones activadas!', {
+           // body: 'Te avisaremos de ofertas y nuevos productos.',
+            //icon: 'img/icons/icon-192x192.png',
+           // badge: 'img/icons/icon-72x72.png',
+            //vibrate: [200, 100, 200]
+        //});
+
+      //  mostrarToast('🔔 ¡Notificaciones activadas!');
+    //} catch (error) {
+        //console.error('Error:', error);
+       // mostrarToast('❌ Error al activar notificaciones');
+    //}
+//});
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
